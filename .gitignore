@@ -1,2 +1,4 @@
+.gitignore
 compose.yml
 script.ts
+CNAME

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DGS Puan Hesaplama</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+    </head>
+    <h1>DG5 PU4N H354PL4M4</h1>
+    <form name="calculator" onsubmit="return false;">
+        <table>
+            <tr>
+                <td>Diploma Notu</td>
+                <td align="center">
+                    <input type="number" name="dnot" min="50" max="100" required value="87" maxlength="3" onclick="focus(); select();">
+                </td>
+            </tr>
+            <tr>
+                <td>Önlisans Başarı Puanı</td>
+                <td align="center">
+                    <input type="number" name="obp" min="40" max="60" onclick="focus(); select();">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Net</th>
+            </tr>
+            <tr>
+                <td>Türkçe (50)</td>
+                <td align="center">
+                    <input type="number" name="tnet" min="1" max="50" required value="40" onclick="focus(); select();">
+                </td>
+            </tr>
+            <tr>
+                <td>Matematik (50)</td>
+                <td align="center">
+                    <input type="number" name="mnet" min="1" max="50" required value="30" onclick="focus(); select();">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button onclick="val()">Hesapla</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <!-- <h2 id="result"></h2> -->
+    <table>
+        <tr>
+            <td>Sayısal</td>
+            <td id="res-say" align="center">0.00</td>
+        </tr>
+        <tr>
+            <td>Sözel</td>
+            <td id="res-soz" align="center">0.00</td>
+        </tr>
+        <tr>
+            <td>Eşit Ağırlık</td>
+            <td id="res-ea" align="center">0.00</td>
+        </tr>
+    </table>
+    <p id="loc"></p>
+</html>

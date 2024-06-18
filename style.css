@@ -37,15 +37,12 @@ button {
     padding: 12px 0;
     font: 14px monospace;
     cursor: pointer;
-    transition: all .06s ease-in;
     margin-top: 30px;
     -webkit-tap-highlight-color: transparent;
 }
 
 button:active {
     filter: hue-rotate(45deg);
-    /* background: #850F8D; */
-    box-shadow: 0 0 0 4px #FFA62FAA;
 }
 
 form+h2 {

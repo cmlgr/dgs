@@ -7,57 +7,86 @@
         <link rel="stylesheet" href="style.css">
         <script src="script.js" defer></script>
     </head>
-    <h1>DG5 PU4N H354PL4M4</h1>
+    <h1>🤩<br>DG5 PU4N H354PL4M4</h1>
     <form name="calculator" onsubmit="return false;">
         <table>
             <tr>
                 <td>Diploma Notu</td>
-                <td align="center">
-                    <input type="number" name="dnot" min="50" max="100" required value="87" maxlength="3" onclick="focus(); select();">
+                <td align="right" colspan="2">
+                    <input type="number" name="dnot" min="50" max="100" value="87" onclick="focus(); select();" onchange="calcobp(this.value)">
                 </td>
             </tr>
-            <!-- <tr>
+            <tr>
                 <td>Önlisans Başarı Puanı</td>
-                <td align="center">
-                    <input type="number" name="obp" min="40" max="60" onclick="focus(); select();">
+                <td align="right" colspan="2">
+                    <input type="text" name="obp" size="4" disabled>
                 </td>
-            </tr> -->
+            </tr>
             <tr>
                 <th></th>
-                <th>Net</th>
+                <th>✅</th>
+                <th>❎</th>
             </tr>
             <tr>
                 <td>Türkçe (50)</td>
                 <td align="center">
-                    <input type="number" name="tnet" min="1" max="50" required value="40" onclick="focus(); select();">
+                    <input type="number" name="td" min="1" max="50" required value="30" onclick="focus(); select();">
+                </td>
+                <td align="center">
+                    <input type="number" name="ty" min="0" max="50" placeholder="0" onclick="focus(); select();">
                 </td>
             </tr>
             <tr>
                 <td>Matematik (50)</td>
                 <td align="center">
-                    <input type="number" name="mnet" min="1" max="50" required value="30" onclick="focus(); select();">
+                    <input type="number" name="md" min="1" max="50" value="30" required onclick="focus(); select();">
+                </td>
+                <td align="center">
+                    <input type="number" name="my" min="0" max="50" placeholder="0" onclick="focus(); select();">
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
-                    <button onclick="val()">Hesapla</button>
+                <td colspan="3">
+                    <button id="valu" onclick="val()">Hesapla</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <button id="res" onclick="resres()">Temizle</button>
                 </td>
             </tr>
         </table>
     </form>
-    <!-- <h2 id="result"></h2> -->
-    <table>
+    <table id="net">
+        <tr>
+            <td></td>
+            <th align="right">Net</th>
+        </tr>
+        <tr>
+            <td>Türkçe</td>
+            <td id="tnet" align="right"></td>
+        </tr>
+        <tr>
+            <td>Matematik</td>
+            <td id="mnet" align="right"></td>
+        </tr>
+    </table>
+    <table id="puan">
+        <tr>
+            <td></td>
+            <th align="right">Puan</th>
+        </tr>
         <tr>
             <td>Sayısal</td>
-            <td id="res-say" align="center">0.00</td>
+            <td id="res-say" align="right">0.00</td>
         </tr>
         <tr>
             <td>Sözel</td>
-            <td id="res-soz" align="center">0.00</td>
+            <td id="res-soz" align="right">0.00</td>
         </tr>
         <tr>
             <td>Eşit Ağırlık</td>
-            <td id="res-ea" align="center">0.00</td>
+            <td id="res-ea" align="right">0.00</td>
         </tr>
     </table>
     <p id="loc"></p>

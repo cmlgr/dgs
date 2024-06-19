@@ -7,13 +7,14 @@
         <link rel="stylesheet" href="style.css">
         <script src="script.js" defer></script>
     </head>
-    <h1>🤩<br>DG5 PU4N H354PL4M4</h1>
+    <h1><span>🤩</span><br>DG5 PU4N H354PL4M4</h1>
+    <hr>
     <form name="calculator" onsubmit="return false;">
         <table>
             <tr>
                 <td>Diploma Notu</td>
                 <td align="right" colspan="2">
-                    <input type="number" name="dnot" min="50" max="100" value="87" onclick="focus(); select();" onchange="calcobp(this.value)">
+                    <input type="number" name="dnot" min="50" max="100" placeholder="90" required onclick="focus(); select();" onchange="calcobp(this.value)">
                 </td>
             </tr>
             <tr>
@@ -30,19 +31,19 @@
             <tr>
                 <td>Türkçe (50)</td>
                 <td align="center">
-                    <input type="number" name="td" min="1" max="50" required value="30" onclick="focus(); select();">
+                    <input type="number" name="td" min="1" max="50" required placeholder="rand(20, 45);" onclick="focus(); select();">
                 </td>
                 <td align="center">
-                    <input type="number" name="ty" min="0" max="50" placeholder="0" onclick="focus(); select();">
+                    <input type="number" name="ty" min="0" max="50" placeholder="4" onclick="focus(); select();">
                 </td>
             </tr>
             <tr>
                 <td>Matematik (50)</td>
                 <td align="center">
-                    <input type="number" name="md" min="1" max="50" value="30" required onclick="focus(); select();">
+                    <input type="number" name="md" min="1" max="50" placeholder="rand(20, 45)" required onclick="focus(); select();">
                 </td>
                 <td align="center">
-                    <input type="number" name="my" min="0" max="50" placeholder="0" onclick="focus(); select();">
+                    <input type="number" name="my" min="0" max="50" placeholder="4" onclick="focus(); select();">
                 </td>
             </tr>
             <tr>
@@ -52,11 +53,12 @@
             </tr>
             <tr>
                 <td colspan="3">
-                    <button id="res" onclick="resres()">Temizle</button>
+                    <button id="res" onclick="resres()">Sıfırla</button>
                 </td>
             </tr>
         </table>
     </form>
+    <hr style="display: none;">
     <table id="net">
         <tr>
             <td></td>
@@ -89,5 +91,5 @@
             <td id="res-ea" align="right">0.00</td>
         </tr>
     </table>
-    <p id="loc"></p>
+    <p>by @cmlgr</p>
 </html>

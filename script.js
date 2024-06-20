@@ -50,10 +50,8 @@ function calculate(dnot, td, ty, md, my) {
     var sozsonuc = ((obp * .6) + ((tnet * 3.19561538461) + (mnet * 0.6642544)) + 130.174899293);
     var easonuc = ((obp * .6) + ((tnet * 1.91736923076) + (mnet * 1.9927632)) + 138.000319416);
     results.style = "display: block;";
-    // net.style = "display: table;"
     (_a = net === null || net === void 0 ? void 0 : net.querySelector("#tnet")) === null || _a === void 0 ? void 0 : _a.textContent = tnet;
     (_b = net === null || net === void 0 ? void 0 : net.querySelector("#mnet")) === null || _b === void 0 ? void 0 : _b.textContent = mnet;
-    // puan.style = "display: table;"
     (_c = puan === null || puan === void 0 ? void 0 : puan.querySelector("#res-say")) === null || _c === void 0 ? void 0 : _c.textContent = saysonuc.toFixed(4);
     (_d = puan.querySelector("#res-soz")) === null || _d === void 0 ? void 0 : _d.textContent = sozsonuc.toFixed(4);
     (_e = puan.querySelector("#res-ea")) === null || _e === void 0 ? void 0 : _e.textContent = easonuc.toFixed(4);

@@ -1,1 +1,76 @@
-var _a,_b,_c,_d,_e,form=document.forms.calculator;function rand(e,n){for(var l=100*Math.random();l<Number(e)||l>Number(n);)l=100*Math.random();return Math.trunc(l)}function val(e,n,l,a,t){return(void 0===e&&(e=form.dnot.value),void 0===n&&(n=form.td.value),void 0===l&&(l=form.ty.value),void 0===a&&(a=form.md.value),void 0===t&&(t=form.my.value),e>=50&&e<=100)?n>=1&&a>=1&&n-l/4>=1&&a-t/4>=1?Number(n)+Number(l)<=50&&Number(a)+Number(t)<=50?(navigator.vibrate(10),calc(e,n,l,a,t)):(alert("Doğru ve yanlış toplamı, toplam soru sayısından fazla olamaz"),!1):(alert("Puan hesaplanabilmesi i\xe7in her iki alandan da en az 1 net olmalı"),!1):(alert("Diploma notu 50'den d\xfcş\xfck, 100'den y\xfcksek olamaz"),!1)}function calc(e,n,l,a,t){var o,r,d,i,u,$=.8*e,m=n-l/4,y=a-t/4;null===(o=document.getElementById("res-say"))||void 0===o||(o.innerHTML=(.6*$+(.63912307692*m+3.3212704*y)+145.825787139).toFixed(4)),null===(r=document.getElementById("res-soz"))||void 0===r||(r.innerHTML=(.6*$+(3.19561538461*m+.6642544*y)+130.174899293).toFixed(4)),null===(d=document.getElementById("res-ea"))||void 0===d||(d.innerHTML=(.6*$+(1.91736923076*m+1.9927632*y)+138.000319416).toFixed(4)),document.getElementsByTagName("hr")[1].style="display: block",document.getElementById("net").style="display: table;",null===(i=document.getElementById("mnet"))||void 0===i||(i.innerText=y),null===(u=document.getElementById("tnet"))||void 0===u||(u.innerText=m),document.getElementById("puan").style="display: table;"}function calcobp(e){document.getElementsByName("obp")[0].value=Math.round(.8*e)}function resres(e){void 0===e&&(e=this.form),e.reset(),document.querySelector("#net").style="display: none",document.querySelector("#puan").style="display: none",document.getElementsByTagName("hr")[1].style="display: none"}null===(_a=document.querySelector("input[name=dnot]"))||void 0===_a||(_a.placeholder=rand(70,90)),null===(_b=document.querySelector("input[name=td]"))||void 0===_b||(_b.placeholder=rand(25,45)),null===(_c=document.querySelector("input[name=ty]"))||void 0===_c||(_c.placeholder=rand(0,8)),null===(_d=document.querySelector("input[name=md]"))||void 0===_d||(_d.placeholder=rand(25,45)),null===(_e=document.querySelector("input[name=my]"))||void 0===_e||(_e.placeholder=rand(0,8));
+var form = document.forms["calculator"];
+var results = document.querySelector("#results");
+var net = document.getElementById("net");
+var puan = document.getElementById("puan");
+function rand(min, max) {
+    var r = Math.random() * 100;
+    while (r < Number(min) || r > Number(max)) {
+        r = Math.random() * 100;
+    }
+    return Math.trunc(r);
+}
+form.dnot.placeholder = rand(70, 90);
+form.td.placeholder = rand(25, 42);
+form.ty.placeholder = rand(0, 8);
+form.md.placeholder = rand(25, 42);
+form.my.placeholder = rand(0, 8);
+function validate(dnot, td, ty, md, my) {
+    if (dnot === void 0) { dnot = form.dnot.value; }
+    if (td === void 0) { td = form.td.value; }
+    if (ty === void 0) { ty = form.ty.value; }
+    if (md === void 0) { md = form.md.value; }
+    if (my === void 0) { my = form.my.value; }
+    if ((dnot >= 50 && dnot <= 100)) {
+        if ((td >= 1) && (md >= 1) && (((td - (ty / 4)) >= 1) && (md - (my / 4)) >= 1)) {
+            if (((Number(td) + Number(ty)) <= 50) && ((Number(md) + Number(my)) <= 50)) {
+                navigator.vibrate(10);
+                return calculate(dnot, td, ty, md, my);
+            }
+            else {
+                alert("Doğru ve yanlış toplamı, toplam soru sayısından fazla olamaz");
+                return false;
+            }
+        }
+        else {
+            alert("Puan hesaplanabilmesi için her iki alandan da en az 1 net olmalı");
+            return false;
+        }
+    }
+    else {
+        alert("Diploma notu 50'den düşük, 100'den yüksek olamaz");
+        return false;
+    }
+}
+function calculate(dnot, td, ty, md, my) {
+    var _a, _b, _c, _d, _e;
+    var obp = (dnot * .8);
+    var tnet = (td - (ty / 4));
+    var mnet = (md - (my / 4));
+    var saysonuc = ((obp * .6) + ((tnet * 0.63912307692) + (mnet * 3.3212704)) + 145.825787139);
+    var sozsonuc = ((obp * .6) + ((tnet * 3.19561538461) + (mnet * 0.6642544)) + 130.174899293);
+    var easonuc = ((obp * .6) + ((tnet * 1.91736923076) + (mnet * 1.9927632)) + 138.000319416);
+    results.style = "display: block;";
+    // net.style = "display: table;"
+    (_a = net === null || net === void 0 ? void 0 : net.querySelector("#tnet")) === null || _a === void 0 ? void 0 : _a.textContent = tnet;
+    (_b = net === null || net === void 0 ? void 0 : net.querySelector("#mnet")) === null || _b === void 0 ? void 0 : _b.textContent = mnet;
+    // puan.style = "display: table;"
+    (_c = puan === null || puan === void 0 ? void 0 : puan.querySelector("#res-say")) === null || _c === void 0 ? void 0 : _c.textContent = saysonuc.toFixed(4);
+    (_d = puan.querySelector("#res-soz")) === null || _d === void 0 ? void 0 : _d.textContent = sozsonuc.toFixed(4);
+    (_e = puan.querySelector("#res-ea")) === null || _e === void 0 ? void 0 : _e.textContent = easonuc.toFixed(4);
+    results === null || results === void 0 ? void 0 : results.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+}
+function calcObp(dnot) {
+    form.obp.value = Math.round(dnot * .8);
+}
+function resres(f) {
+    var _a, _b, _c, _d, _e;
+    if (f === void 0) { f = this.form; }
+    f.reset();
+    results.style = "display: none";
+    (_a = net === null || net === void 0 ? void 0 : net.querySelector("#tnet")) === null || _a === void 0 ? void 0 : _a.textContent = null;
+    (_b = net === null || net === void 0 ? void 0 : net.querySelector("#mnet")) === null || _b === void 0 ? void 0 : _b.textContent = null;
+    (_c = puan === null || puan === void 0 ? void 0 : puan.querySelector("#res-say")) === null || _c === void 0 ? void 0 : _c.textContent = null;
+    (_d = puan.querySelector("#res-soz")) === null || _d === void 0 ? void 0 : _d.textContent = null;
+    (_e = puan.querySelector("#res-ea")) === null || _e === void 0 ? void 0 : _e.textContent = null;
+    form.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+}

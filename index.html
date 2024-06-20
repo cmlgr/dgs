@@ -1,95 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
     <head>
         <title>DGS Puan Hesaplama</title>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <meta name="title" content="DGS Puan Hesaplayıcı">
+        <meta name="description" content="DGS Puanı hesaplayıcı">
+        <meta name="robots" content="noindex,nofollow">
+        <meta name="google" content="nositelinkssearchbox">
         <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer></script>
+        <script src="script.js" async></script>
     </head>
-    <h1><span>🤩</span><br>DG5 PU4N H354PL4M4</h1>
-    <hr>
+    <h1>DG5 PU4N H354PL4M4</h1>
+    <hr/>
     <form name="calculator" onsubmit="return false;">
         <table>
             <tr>
                 <td>Diploma Notu</td>
                 <td align="right" colspan="2">
-                    <input type="number" name="dnot" min="50" max="100" placeholder="90" required onclick="focus(); select();" onchange="calcobp(this.value)">
+                    <input type="number" name="dnot" min="50" max="100" required onclick="focus(); select();" onchange="calcObp(this.value)">
                 </td>
             </tr>
             <tr>
                 <td>Önlisans Başarı Puanı</td>
                 <td align="right" colspan="2">
-                    <input type="text" name="obp" size="4" disabled>
+                    <input type="text" name="obp" size="2" disabled>
                 </td>
             </tr>
             <tr>
                 <th></th>
-                <th>✅</th>
-                <th>❎</th>
+                <th title="Doğru sayısı">✅</th>
+                <th title="Yanlış sayısı">❎</th>
             </tr>
             <tr>
-                <td>Türkçe (50)</td>
+                <td>Türkçe <span class="small-fade">(50)</span></td>
                 <td align="center">
-                    <input type="number" name="td" min="1" max="50" required placeholder="rand(20, 45);" onclick="focus(); select();">
+                    <input type="number" name="td" min="1" max="50" required onclick="focus(); select();">
                 </td>
                 <td align="center">
-                    <input type="number" name="ty" min="0" max="50" placeholder="4" onclick="focus(); select();">
-                </td>
-            </tr>
-            <tr>
-                <td>Matematik (50)</td>
-                <td align="center">
-                    <input type="number" name="md" min="1" max="50" placeholder="rand(20, 45)" required onclick="focus(); select();">
-                </td>
-                <td align="center">
-                    <input type="number" name="my" min="0" max="50" placeholder="4" onclick="focus(); select();">
+                    <input type="number" name="ty" min="0" max="50" onclick="focus(); select();">
                 </td>
             </tr>
             <tr>
-                <td colspan="3">
-                    <button id="valu" onclick="val()">Hesapla</button>
+                <td>Matematik <span class="small-fade">(50)</span></td>
+                <td align="center">
+                    <input type="number" name="md" min="1" max="50" required onclick="focus(); select();">
+                </td>
+                <td align="center">
+                    <input type="number" name="my" min="0" max="50" onclick="focus(); select();">
                 </td>
             </tr>
             <tr>
                 <td colspan="3">
-                    <button id="res" onclick="resres()">Sıfırla</button>
+                    <button name="val" onclick="validate()">Hesapla</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <button name="res" onclick="resres()">Sıfırla</button>
                 </td>
             </tr>
         </table>
     </form>
-    <hr style="display: none;">
-    <table id="net">
-        <tr>
-            <td></td>
-            <th align="right">Net</th>
-        </tr>
-        <tr>
-            <td>Türkçe</td>
-            <td id="tnet" align="right"></td>
-        </tr>
-        <tr>
-            <td>Matematik</td>
-            <td id="mnet" align="right"></td>
-        </tr>
-    </table>
-    <table id="puan">
-        <tr>
-            <td></td>
-            <th align="right">Puan</th>
-        </tr>
-        <tr>
-            <td>Sayısal</td>
-            <td id="res-say" align="right">0.00</td>
-        </tr>
-        <tr>
-            <td>Sözel</td>
-            <td id="res-soz" align="right">0.00</td>
-        </tr>
-        <tr>
-            <td>Eşit Ağırlık</td>
-            <td id="res-ea" align="right">0.00</td>
-        </tr>
-    </table>
+    <section id="results">
+        <hr>
+        <table id="net">
+            <tr>
+                <td></td>
+                <th align="right">Net</th>
+            </tr>
+            <tr>
+                <td>Türkçe</td>
+                <td id="tnet" align="right"></td>
+            </tr>
+            <tr>
+                <td>Matematik</td>
+                <td id="mnet" align="right"></td>
+            </tr>
+        </table>
+        <table id="puan">
+            <tr>
+                <td></td>
+                <th align="right">Puan <span class="small-fade">(2023)</span></th>
+            </tr>
+            <tr>
+                <td>Sayısal</td>
+                <td id="res-say" align="right"></td>
+            </tr>
+            <tr>
+                <td>Sözel</td>
+                <td id="res-soz" align="right"></td>
+            </tr>
+            <tr>
+                <td>Eşit Ağırlık</td>
+                <td id="res-ea" align="right"></td>
+            </tr>
+        </table>
+    </section>
     <p>by @cmlgr</p>
 </html>

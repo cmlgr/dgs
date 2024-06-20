@@ -1,3 +1,11 @@
+:root {
+    --dark-clr: #cfcfcf;
+    --light-clr: #2a2a2a;
+    --dark-bg: #000;
+    --light-bg: #fff;
+    --font-btn: 400 14px "Play", sans-serif;
+}
+
 @font-face {
     font-family: Play;
     src: url(Play.ttf);
@@ -15,63 +23,62 @@ body {
     row-gap: 30px;
     background: #000;
     color: #cfcfcf;
+    -webkit-user-select: none;
 }
 
 hr {
     width: 99%;
-    border: .5px solid #1a1a1a;
+    /* border: .5px solid #1a1a1a; */
+    border: .5px solid #242424;
 }
 
 h1 {
     text-align: center;
     line-height: 20px;
-    z-index: 1;
-}
-
-h1 span {
-    font-size: 48px;
-    display: block;
 }
 
 input {
-    /* color: #CFCFCF; */
     font: 400 16px "Play";
     text-align: center;
 }
 
 input[type=number], input[type=text] {
+    color: #CFCFCF;
     padding: 6px 2px;
     border-radius: 4px;
     border: none;
-    color: #cfcfcf;
-    /* border: 1px solid #444; */
     background: #242424;
 }
 
+input:disabled {
+    color: #545454;
+}
+
 input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-inner-spin-button {
+input[type=number]::-webkit-outer-spin-button {
     display: none;
 }
 
 button {
     width: 100%;
-    color: #eee;
-    border-radius: 4px;
-    border: none;
     padding: 10px 0;
-    font: 400 14px "Play";
+    color: #EEE;
+    border: none;
+    border-radius: 4px;
+    font: var(--font-btn);
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
 }
 
-button#valu {
+button[name=val] {
     margin-top: 30px;
     background: #cc0000;
     box-shadow: 0 0 0 4px #cc0000aa;
 }
 
-button#res {
-    margin-top: 10px;
+button[name=res] {
+    margin-top: 6px;
     background: #3a3a3a;
     box-shadow: 0 0 0 4px #3a3a3aaa;
 }
@@ -97,6 +104,11 @@ table td, table th {
     padding: 8px;
 }
 
-table#net, table#puan {
+span.small-fade {
+    font-size: 10px;
+    color: #545454;
+}
+
+section#results {
     display: none;
 }

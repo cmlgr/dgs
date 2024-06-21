@@ -62,8 +62,8 @@ function calcObp(dnot) {
     if (dnot >= 50 && dnot <= 100)
         form.obp.value = Math.round(dnot * .8);
     else {
-        form.dnot.value = null;
         form.dnot.focus();
+        form.dnot.select();
         alert("Diploma notu 50'den düşük, 100'den yüksek olamaz");
     }
 }

@@ -38,6 +38,7 @@ function validate(dnot, td, ty, md, my) {
     }
     else {
         alert("Diploma notu 50'den düşük, 100'den yüksek olamaz");
+        form.dnot.select();
         return false;
     }
 }
@@ -58,7 +59,13 @@ function calculate(dnot, td, ty, md, my) {
     results === null || results === void 0 ? void 0 : results.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 }
 function calcObp(dnot) {
-    form.obp.value = Math.round(dnot * .8);
+    if (dnot >= 50 && dnot <= 100)
+        form.obp.value = Math.round(dnot * .8);
+    else {
+        form.dnot.value = null;
+        form.dnot.focus();
+        alert("Diploma notu 50'den düşük, 100'den yüksek olamaz");
+    }
 }
 function resres(f) {
     var _a, _b, _c, _d, _e;

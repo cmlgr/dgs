@@ -22,13 +22,13 @@
             <tr>
                 <td>Diploma Notu</td>
                 <td align="right" colspan="2">
-                    <input type="number" name="dnot" min="50" max="100" required onclick="select()" onchange="calcObp(this.value)">
+                    <input type="text" inputmode="numeric" name="dnot" size="3" maxlength="5" pattern="/^1?([1-9]{2})([,|.][\d]{1,2})?$/g" autocomplete="off" required onclick="select()" onchange="calcObp(this.value)">   
                 </td>
             </tr>
             <tr>
                 <td>Önlisans Başarı Puanı</td>
                 <td align="right" colspan="2">
-                    <input type="text" name="obp" size="2" disabled>
+                    <input type="text" name="obp" size="3" disabled>
                 </td>
             </tr>
             <tr>

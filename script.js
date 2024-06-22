@@ -20,6 +20,7 @@ function validate(dnot, td, ty, md, my) {
     if (ty === void 0) { ty = form.ty.value; }
     if (md === void 0) { md = form.md.value; }
     if (my === void 0) { my = form.my.value; }
+    dnot = Number(dnot.toString().replace(",", "."));
     if ((dnot >= 50 && dnot <= 100)) {
         if ((td >= 1) && (md >= 1) && (((td - (ty / 4)) >= 1) && (md - (my / 4)) >= 1)) {
             if (((Number(td) + Number(ty)) <= 50) && ((Number(md) + Number(my)) <= 50)) {
@@ -59,8 +60,9 @@ function calculate(dnot, td, ty, md, my) {
     results === null || results === void 0 ? void 0 : results.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 }
 function calcObp(dnot) {
+    dnot = Number(dnot.toString().replace(",", "."));
     if (dnot >= 50 && dnot <= 100)
-        form.obp.value = Math.round(dnot * .8);
+        form.obp.value = (dnot * .8).toFixed(2);
     else {
         form.dnot.focus();
         form.dnot.select();

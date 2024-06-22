@@ -61,13 +61,7 @@ function calculate(dnot, td, ty, md, my) {
 }
 function calcObp(dnot) {
     dnot = Number(dnot.toString().replace(",", "."));
-    if (dnot >= 50 && dnot <= 100)
-        form.obp.value = (dnot * .8).toFixed(2);
-    else {
-        form.dnot.focus();
-        form.dnot.select();
-        alert("Diploma notu 50'den düşük, 100'den yüksek olamaz");
-    }
+    (dnot >= 50 && dnot <= 100) ? form.obp.value = (dnot * .8).toFixed(2) : form.obp.value = null;
 }
 function resres(f) {
     var _a, _b, _c, _d, _e;

@@ -1,78 +1,80 @@
 <!DOCTYPE html>
 <html lang="tr">
     <head>
-        <title>DGS Puan Hesaplama</title>
+        <title>DGS Puan Hesaplama 2024</title>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
         <!-- <meta http-equiv='cache-control' content='no-cache'> 
         <meta http-equiv='expires' content='0'> 
-        <meta http-equiv='pragma' content='no-cache'> -->
+        <meta http-equiv='pragma' content='no-cache'>
+        <meta name="robots" content="noindex,nofollow"> -->
         <meta name="title" content="DGS Puan Hesaplama 2024">
-        <meta name="description" content="DGS Puan Hesaplama. DGS Puan Hesaplayıcıyı kullanarak en güncel katsayılara göre DGS puanınızı ve netlerinizi hesaplayabilirsiniz.">
-        <!-- <meta name="robots" content="noindex,nofollow"> -->
+        <meta name="description" content="DGS Puan Hesaplama aracını kullanarak en güncel (2024) katsayılara göre DGS puanınızı ve netlerinizi hesaplayabilirsiniz.">
         <meta name="google" content="nositelinkssearchbox">
         <link rel="stylesheet" href="style.css">
-        <script src="script.js" async></script>
+        <script async src="script.js"></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2634064028222835" crossorigin="anonymous"></script>
     </head>
-    <h1>DG5 PU4N H354PL4M4</h1>
-    <hr/>
-    <form name="calculator" onsubmit="return false;">
-        <table>
-            <tr>
-                <td>Diploma Notu</td>
-                <td align="right" colspan="2">
-                    <input type="text" inputmode="numeric" name="dnot" size="3" maxlength="5" pattern="/^1?([1-9]{2})([,|.][\d]{1,2})?$/g" autocomplete="off" required onclick="select()" onchange="calcObp(this.value)">   
-                </td>
-            </tr>
-            <tr>
-                <td>Önlisans Başarı Puanı</td>
-                <td align="right" colspan="2">
-                    <input type="text" name="obp" size="3" disabled>
-                </td>
-            </tr>
-            <tr>
-                <th></th>
-                <th title="Doğru sayısı">✅</th>
-                <th title="Yanlış sayısı">❎</th>
-            </tr>
-            <tr>
-                <td>Türkçe <span class="small-fade">(50)</span></td>
-                <td align="center">
-                    <input type="number" name="td" min="1" max="50" required onclick="select()">
-                </td>
-                <td align="center">
-                    <input type="number" name="ty" min="0" max="50" onclick="select()">
-                </td>
-            </tr>
-            <tr>
-                <td>Matematik <span class="small-fade">(50)</span></td>
-                <td align="center">
-                    <input type="number" name="md" min="1" max="50" required onclick="select()">
-                </td>
-                <td align="center">
-                    <input type="number" name="my" min="0" max="50" onclick="select()">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <button name="val" onclick="validate()">Hesapla</button>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <button name="res" onclick="resres()">Sıfırla</button>
-                </td>
-            </tr>
-        </table>
-    </form>
+    <section>
+
+        <form name="calculator" onsubmit="return false;">
+            <table>
+                <tr>
+                    <td>Diploma Notu</td>
+                    <td align="right" colspan="2">
+                        <input type="text" inputmode="numeric" name="dnot" size="3" maxlength="5" pattern="/^1?([1-9]{2})([,|.][\d]{1,2})?$/g" autocomplete="off" required onclick="select()" onchange="calcObp(this.value)">   
+                    </td>
+                </tr>
+                <tr>
+                    <td>Önlisans Başarı Puanı</td>
+                    <td align="right" colspan="2">
+                        <input type="text" name="obp" size="3" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th title="Doğru sayısı">✅</th>
+                    <th title="Yanlış sayısı">❎</th>
+                </tr>
+                <tr>
+                    <td>Türkçe <span class="small-fade">(50)</span></td>
+                    <td align="center">
+                        <input type="number" name="td" min="1" max="50" maxlength="3" required onclick="select()">
+                    </td>
+                    <td align="center">
+                        <input type="number" name="ty" min="0" max="50" onclick="select()">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Matematik <span class="small-fade">(50)</span></td>
+                    <td align="center">
+                        <input type="number" name="md" min="1" max="50" required onclick="select()">
+                    </td>
+                    <td align="center">
+                        <input type="number" name="my" min="0" max="50" onclick="select()">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <button name="val" onclick="validate()">Hesapla ▶️</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <button name="res" onclick="resres()">Sıfırla 🔄️</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </section>
     <section id="results">
-        <hr>
         <table id="net">
-            <tr>
-                <td></td>
-                <th align="right">Net</th>
-            </tr>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th align="right">Net</th>
+                </tr>
+            </thead>
             <tr>
                 <td>Türkçe</td>
                 <td id="tnet" align="right"></td>
@@ -83,10 +85,12 @@
             </tr>
         </table>
         <table id="puan">
-            <tr>
-                <td></td>
-                <th align="right">Puan <span class="small-fade">(2023)</span></th>
-            </tr>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th align="right">Puan <span class="small-fade">(2023)</span></th>
+                </tr>
+            </thead>
             <tr>
                 <td>Sayısal</td>
                 <td id="res-say" align="right"></td>
@@ -101,5 +105,7 @@
             </tr>
         </table>
     </section>
-    <p>by @cmlgr</p>
+    <!-- <section>
+        <span id="credit">by @cmlgr</span>
+    </section> -->
 </html>

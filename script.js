@@ -79,8 +79,8 @@ function resres(f) {
     form.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 }
 function openModal(message, title) {
+    // console.log("A modal has been opened");
     if (title === void 0) { title = ""; }
-    console.log("A modal has been opened");
     var modal = document.createElement("div");
     modal.classList.add("modal");
     document.body.append(modal);
@@ -100,9 +100,9 @@ function openModal(message, title) {
     modal.append(modalButton);
     modalButton.addEventListener("click", function () {
         modal.remove();
-        console.log("A modal has been sought to removed");
+        // console.log("A modal has been closed");
     });
     setTimeout(function () {
         modal.remove();
-    }, 4000);
+    }, 2000);
 }

@@ -84,7 +84,7 @@ function resres(f: HTMLFormElement = this.form): void {
 }
 
 function openModal(message: string, title: string = ""): void {
-    console.log("A modal has been opened");
+    // console.log("A modal has been opened");
 
     let modal = document.createElement("div");
     modal.classList.add("modal");
@@ -109,10 +109,10 @@ function openModal(message: string, title: string = ""): void {
 
     modalButton.addEventListener("click", () => {
         modal.remove();
-        console.log("A modal has been sought to removed");
+        // console.log("A modal has been closed");
     });
 
     setTimeout(() => {
         modal.remove();
-    }, 4000);
+    }, 2000);
 }

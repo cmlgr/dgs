@@ -21,7 +21,7 @@
                 <tr>
                     <td>Diploma Notu</td>
                     <td align="right" colspan="2">
-                        <input type="text" inputmode="numeric" name="dnot" size="3" maxlength="5" pattern="/^1?([1-9]{2})([,|.][\d]{1,2})?$/g" autocomplete="off" required onclick="select()" onchange="calcObp(this.value)">   
+                        <input type="text" inputmode="numeric" name="dnot" size="3" maxlength="5" pattern="/^1?([1-9]{2})([,|.][\d]{1,2})?$/g" autocomplete="off" onclick="select()" onchange="calcObp(this.value)">   
                     </td>
                 </tr>
                 <tr>
@@ -38,7 +38,7 @@
                 <tr>
                     <td>Türkçe <span class="small-fade">(50)</span></td>
                     <td align="center">
-                        <input type="number" name="td" min="1" max="50" maxlength="3" required onclick="select()">
+                        <input type="number" name="td" min="1" max="50" maxlength="3" onclick="select()">
                     </td>
                     <td align="center">
                         <input type="number" name="ty" min="0" max="50" onclick="select()">
@@ -47,7 +47,7 @@
                 <tr>
                     <td>Matematik <span class="small-fade">(50)</span></td>
                     <td align="center">
-                        <input type="number" name="md" min="1" max="50" required onclick="select()">
+                        <input type="number" name="md" min="1" max="50" onclick="select()">
                     </td>
                     <td align="center">
                         <input type="number" name="my" min="0" max="50" onclick="select()">

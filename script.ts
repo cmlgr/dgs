@@ -1,7 +1,10 @@
-const form = document.forms["calculator"];
-const results = document.querySelector("#results");
-const net = document.getElementById("net");
-const puan = document.getElementById("puan");
+const
+    form = document.forms["calculator"],
+    results = document.querySelector("#results"),
+    net = document.getElementById("net"),
+    puan = document.getElementById("puan");
+
+var isModalOpen;
 
 function rand(min: Number, max: Number): Number {
     let r = Math.random() * 100;
@@ -17,6 +20,13 @@ form.ty.placeholder = rand(0, 8);
 form.md.placeholder = rand(25, 42);
 form.my.placeholder = rand(0, 8);
 
+document.body.addEventListener("onload", () => {
+    if (localStorage.getItem("dnot") != null) {
+        // form.dnot.value = localStorage.getItem("dnot");
+        console.log(localStorage.getItem("dnot"));
+    }
+});
+
 function validate(dnot: number = form.dnot.value, td: number = form.td.value, ty: number = form.ty.value, md: number = form.md.value, my: number = form.my.value): any {
     dnot = Number(dnot.toString().replace(",", "."));
 
@@ -24,21 +34,21 @@ function validate(dnot: number = form.dnot.value, td: number = form.td.value, ty
         if ((td >= 1) && (md >= 1) && (((td - (ty / 4)) >= 1) && (md - (my / 4)) >= 1)) {
             if (((Number(td) + Number(ty)) <= 50) && ((Number(md) + Number(my)) <= 50)) {
                 navigator.vibrate(10);
+                let r = `/^1?([1-9]{2})([.,][\d]{1,2})?$/g`;
                 return calculate(dnot, td, ty, md, my);
             } else {
                 // alert("Doğru ve yanlış toplamı, toplam soru sayısından fazla olamaz");
-                openModal("Doğru ve yanlış sayıları ya da toplamı, toplam soru sayısından fazla olamaz.")
+                modal("Doğru ve yanlış sayıları ya da toplamı, toplam soru sayısından fazla olamaz.")
                 return false;
             }
         } else {
             // alert("Puan hesaplanabilmesi için her iki alandan da en az 1 net olmalı");
-            openModal("Puan hesaplanabilmesi için her iki alandan da en az 1 net yapılmalı.");
+            modal("Puan hesaplanabilmesi için her iki alandan da en az 1 net yapılmalı.");
             return false;
         }
     } else {
         // alert("Diploma notu 50'den düşük, 100'den yüksek olamaz");
-        openModal("Diploma notu 50'den yüksek, 100'den düşük olmalı.");
-        form.dnot.select();
+        modal("Diploma notu 50'den yüksek, 100'den düşük olmalı.");
         return false;
     }
 }
@@ -50,6 +60,8 @@ function calculate(dnot: number, td: number, ty: number, md: number, my: number)
     let saysonuc = ((obp * .6) + ((tnet * 0.63912307692) + (mnet * 3.3212704)) + 145.825787139);
     let sozsonuc = ((obp * .6) + ((tnet * 3.19561538461) + (mnet * 0.6642544)) + 130.174899293);
     let easonuc = ((obp * .6) + ((tnet * 1.91736923076) + (mnet * 1.9927632)) + 138.000319416);
+
+    localStorage.setItem("dnot", dnot.toString());
 
     results.style = "display: block;";
 
@@ -70,6 +82,8 @@ function calcObp(dnot: number): void {
 
 function resres(f: HTMLFormElement = this.form): void {
     f.reset();
+
+    form.dnot.focus();
     
     results.style = "display: none";
     
@@ -83,36 +97,56 @@ function resres(f: HTMLFormElement = this.form): void {
     form.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
 }
 
-function openModal(message: string, title: string = ""): void {
-    // console.log("A modal has been opened");
+function modal(message: string, title: string = ""): boolean {
+    
+    if (isModalOpen == 1) {
+        // console.log("Another modal is open");
+        return false;
+    } else {
+        // console.log("A modal has been opened");
+        isModalOpen = 1;
+    
+        let modal = document.createElement("div");
+        modal.classList.add("modal");
+        modal.classList.add("slideIn");
+        document.body.append(modal);
+    
+        if (title !== "") {
+            let modalTitle = document.createElement("h1");
+            modalTitle.innerText = title;
+            modalTitle.classList.add("modal-title");
+            modal.append(modalTitle);
+        }
+    
+        let modalMessage = document.createElement("p");
+        modalMessage.innerText = message;
+        modalMessage.classList.add("modal-message");
+        modal.append(modalMessage);
+    
+        let modalButton = document.createElement("button");
+        modalButton.innerText = "Tamam";
+        modalButton.classList.add("modal-button");
+        modal.append(modalButton);
+    
+        modalButton.addEventListener("click", () => {
+            modal.classList.remove("slideIn");
+            modal.classList.add("slideOut");
+            setTimeout(() => {
+                modal.remove();
+                isModalOpen = 0;
+            }, 100);
+            // console.log("A modal has been closed");
+        });
 
-    let modal = document.createElement("div");
-    modal.classList.add("modal");
-    document.body.append(modal);
+        setTimeout(() => {
+            modal.classList.remove("slideIn");
+            modal.classList.add("slideOut");
+            setTimeout(() => {
+                modal.remove();
+                isModalOpen = 0;
+            }, 100);
+        }, 2000);
 
-    if (title !== "") {
-        let modalTitle = document.createElement("h1");
-        modalTitle.innerText = title;
-        modalTitle.classList.add("modal-title");
-        modal.append(modalTitle);
+        return true;
     }
-
-    let modalMessage = document.createElement("p");
-    modalMessage.innerText = message;
-    modalMessage.classList.add("modal-message");
-    modal.append(modalMessage);
-
-    let modalButton = document.createElement("button");
-    modalButton.innerText = "Tamam";
-    modalButton.classList.add("modal-button");
-    modal.append(modalButton);
-
-    modalButton.addEventListener("click", () => {
-        modal.remove();
-        // console.log("A modal has been closed");
-    });
-
-    setTimeout(() => {
-        modal.remove();
-    }, 2000);
 }

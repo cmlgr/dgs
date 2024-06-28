@@ -28,17 +28,20 @@ function validate(dnot, td, ty, md, my) {
                 return calculate(dnot, td, ty, md, my);
             }
             else {
-                alert("Doğru ve yanlış toplamı, toplam soru sayısından fazla olamaz");
+                // alert("Doğru ve yanlış toplamı, toplam soru sayısından fazla olamaz");
+                openModal("Doğru ve yanlış sayıları ya da toplamı, toplam soru sayısından fazla olamaz.");
                 return false;
             }
         }
         else {
-            alert("Puan hesaplanabilmesi için her iki alandan da en az 1 net olmalı");
+            // alert("Puan hesaplanabilmesi için her iki alandan da en az 1 net olmalı");
+            openModal("Puan hesaplanabilmesi için her iki alandan da en az 1 net yapılmalı.");
             return false;
         }
     }
     else {
-        alert("Diploma notu 50'den düşük, 100'den yüksek olamaz");
+        // alert("Diploma notu 50'den düşük, 100'den yüksek olamaz");
+        openModal("Diploma notu 50'den yüksek, 100'den düşük olmalı.");
         form.dnot.select();
         return false;
     }
@@ -74,4 +77,32 @@ function resres(f) {
     (_d = puan.querySelector("#res-soz")) === null || _d === void 0 ? void 0 : _d.textContent = null;
     (_e = puan.querySelector("#res-ea")) === null || _e === void 0 ? void 0 : _e.textContent = null;
     form.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+}
+function openModal(message, title) {
+    if (title === void 0) { title = ""; }
+    console.log("A modal has been opened");
+    var modal = document.createElement("div");
+    modal.classList.add("modal");
+    document.body.append(modal);
+    if (title !== "") {
+        var modalTitle = document.createElement("h1");
+        modalTitle.innerText = title;
+        modalTitle.classList.add("modal-title");
+        modal.append(modalTitle);
+    }
+    var modalMessage = document.createElement("p");
+    modalMessage.innerText = message;
+    modalMessage.classList.add("modal-message");
+    modal.append(modalMessage);
+    var modalButton = document.createElement("button");
+    modalButton.innerText = "Tamam";
+    modalButton.classList.add("modal-button");
+    modal.append(modalButton);
+    modalButton.addEventListener("click", function () {
+        modal.remove();
+        console.log("A modal has been sought to removed");
+    });
+    setTimeout(function () {
+        modal.remove();
+    }, 4000);
 }

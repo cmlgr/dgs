@@ -14,6 +14,10 @@
     section {
         width: 90% !important;
     }
+
+    .modal {
+        width: 90px;
+    }
 }
 
 @font-face {
@@ -153,7 +157,7 @@ span#credit {
     position: absolute;
     bottom: 30px;
     z-index: 999;
-    width: 320px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     animation: modalSlideIn .2s ease-out;
